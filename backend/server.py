@@ -30,8 +30,11 @@ import subprocess
 import threading
 import time
 
+from dotenv import load_dotenv
+load_dotenv()
+
 ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
+# load_dotenv(ROOT_DIR / '.env')
 
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
@@ -60,6 +63,10 @@ TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID", "")
 TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN", "")
 TWILIO_PHONE_NUMBER = os.environ.get("TWILIO_PHONE_NUMBER", "")
 ALERT_PHONE_NUMBER = os.environ.get("ALERT_PHONE_NUMBER", "")
+
+print("SID:", TWILIO_ACCOUNT_SID)
+print("FROM:", TWILIO_PHONE_NUMBER)
+print("TO:", ALERT_PHONE_NUMBER)
 
 class User(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -147,7 +154,7 @@ class ConnectionManager:
 manager = ConnectionManager()
 
 try:
-    yolo_model = YOLO('yolov8n.pt')
+    yolo_model = YOLO('yolov8s.pt')
     logging.info("YOLOv8 model loaded successfully")
 except Exception as e:
     logging.error(f"Failed to load YOLOv8 model: {e}")
@@ -248,24 +255,18 @@ def send_email_alert(accident: Accident):
         logging.error(f"❌ Failed to send email alert: {e}")
 
 def send_sms_alert(accident: Accident):
-    """Send SMS alert via Twilio"""
     try:
         if not all([TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER, ALERT_PHONE_NUMBER]):
-            logging.info("📱 Twilio credentials not configured - SMS alert skipped")
+            logging.info("📱 Twilio not configured - skipped")
             return
         
         client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
         
-        message_body = f"""
-🚨 ACCIDENT ALERT
-
-Severity: {accident.severity.upper()}
-Location: {accident.location}
-Time: {accident.timestamp.strftime('%Y-%m-%d %H:%M:%S')}
-Type: {accident.accident_type}
-
-Check dashboard for details.
-        """.strip()
+        message_body = (
+            f"🚨 Accident | {accident.severity.upper()} | "
+            f"{accident.location} | "
+            f"{accident.timestamp.strftime('%H:%M')}"
+        )
         
         message = client.messages.create(
             body=message_body,
@@ -273,13 +274,10 @@ Check dashboard for details.
             to=ALERT_PHONE_NUMBER
         )
         
-        logging.info(f"📱 SMS ALERT sent successfully. SID: {message.sid}")
-        logging.info(f"To: {ALERT_PHONE_NUMBER}")
-        logging.info(f"Location: {accident.location}")
-        logging.info(f"Severity: {accident.severity}")
+        logging.info(f"📱 SMS sent: {message.sid}")
         
     except Exception as e:
-        logging.error(f"❌ Failed to send SMS alert: {e}")
+        logging.error(f"❌ SMS failed: {e}")
 
 def extract_youtube_stream(youtube_url: str) -> tuple[str, dict]:
     """
