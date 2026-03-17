@@ -1,0 +1,177 @@
+{
+  "project_name": "Accident Detection System",
+  "design_philosophy": {
+    "identity": "The Performance Pro - Tactical Command Center",
+    "core_principles": [
+      "Information Density vs Clarity: High density for monitoring, absolute clarity for alerts.",
+      "Tactical Minimalism: No decoration without function. Every pixel must serve the operator.",
+      "Latency Visualization: The interface must feel 'live'. Use pulsing indicators for real-time status.",
+      "Dark Mode Default: Optimized for 24/7 dark room operation."
+    ],
+    "mood": "Professional, Urgent, High-Tech, Reliable",
+    "archetype": "ARCHETYPE 2: THE PERFORMANCE PRO"
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Barlow Condensed, Rajdhani, sans-serif",
+      "body": "Inter, system-ui, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "scale": {
+      "h1": "text-4xl md:text-5xl font-bold tracking-tight uppercase",
+      "h2": "text-3xl font-semibold tracking-tight",
+      "h3": "text-2xl font-medium tracking-normal",
+      "body": "text-base leading-relaxed text-zinc-300",
+      "small": "text-sm text-zinc-400",
+      "mono_data": "font-mono text-sm tracking-wide"
+    },
+    "rules": [
+      "Use 'Barlow Condensed' for all headers and numeric KPIs to save horizontal space.",
+      "Use 'JetBrains Mono' for timestamps, coordinates, and vehicle license plate data.",
+      "Alert headers must be UPPERCASE and tracking-wide."
+    ]
+  },
+  "colors": {
+    "theme": "dark",
+    "palette": {
+      "background": {
+        "default": "#09090b",
+        "paper": "#18181b",
+        "overlay": "rgba(9, 9, 11, 0.8)"
+      },
+      "primary": {
+        "main": "#ef4444",
+        "light": "#f87171",
+        "dark": "#b91c1c",
+        "contrast": "#ffffff"
+      },
+      "secondary": {
+        "main": "#3b82f6",
+        "light": "#60a5fa",
+        "dark": "#1d4ed8",
+        "contrast": "#ffffff"
+      },
+      "status": {
+        "success": "#22c55e",
+        "warning": "#eab308",
+        "error": "#ef4444",
+        "info": "#0ea5e9"
+      },
+      "neutral": {
+        "50": "#fafafa",
+        "100": "#f4f4f5",
+        "200": "#e4e4e7",
+        "300": "#d4d4d8",
+        "400": "#a1a1aa",
+        "500": "#71717a",
+        "600": "#52525b",
+        "700": "#3f3f46",
+        "800": "#27272a",
+        "900": "#18181b",
+        "950": "#09090b"
+      }
+    },
+    "gradients": {
+      "alert_glow": "linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(9, 9, 11, 0) 100%)",
+      "active_feed": "linear-gradient(to top, rgba(59, 130, 246, 0.1), transparent)"
+    },
+    "borders": {
+      "subtle": "1px solid #27272a",
+      "highlight": "1px solid #3f3f46",
+      "active": "1px solid #3b82f6",
+      "alert": "1px solid #ef4444"
+    }
+  },
+  "layout_strategy": {
+    "type": "Bento Grid / High Density",
+    "container_padding": "p-4 md:p-6 lg:p-8",
+    "grid_gap": "gap-4",
+    "modes": {
+      "admin_dashboard": {
+        "structure": "grid grid-cols-12 gap-4 h-screen max-h-screen overflow-hidden",
+        "areas": [
+          "Sidebar: col-span-1",
+          "Main Feed: col-span-8 row-span-2",
+          "Alerts Panel: col-span-3 row-span-2",
+          "Stats Strip: col-span-11 row-span-1"
+        ]
+      },
+      "emergency_mobile": {
+        "structure": "flex flex-col gap-4 p-4",
+        "card_style": "w-full min-h-[150px]"
+      }
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-red-600 hover:bg-red-700 text-white font-medium rounded-md px-4 py-2 shadow-[0_0_10px_rgba(239,68,68,0.3)] transition-all",
+      "secondary": "bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border border-zinc-700 rounded-md px-4 py-2",
+      "ghost": "text-zinc-400 hover:text-white hover:bg-zinc-800/50 rounded-md px-3 py-1"
+    },
+    "cards": {
+      "default": "bg-zinc-900/50 border border-zinc-800 rounded-lg p-5 backdrop-blur-sm",
+      "alert": "bg-red-950/20 border border-red-500/50 rounded-lg p-5 animate-pulse-slow relative overflow-hidden",
+      "video_container": "relative bg-black border border-zinc-800 rounded-lg overflow-hidden aspect-video group"
+    },
+    "inputs": {
+      "default": "bg-zinc-950 border border-zinc-800 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-zinc-600"
+    },
+    "status_indicators": {
+      "live_dot": "w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.8)]",
+      "offline_dot": "w-2 h-2 rounded-full bg-zinc-600"
+    },
+    "navigation": {
+      "sidebar": "bg-zinc-950 border-r border-zinc-800 h-full flex flex-col items-center py-4 gap-4",
+      "header": "bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800 h-16 flex items-center px-6 justify-between z-50 sticky top-0"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": "backdrop-filter backdrop-blur-xl bg-zinc-900/70 border border-white/10",
+    "neon_glow": "box-shadow: 0 0 10px rgba(var(--color-primary), 0.5)",
+    "scanlines": "background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 2px, 3px 100%;",
+    "borders": "Use 'Tracing Beam' effect for active alerts: a moving gradient border."
+  },
+  "assets": {
+    "image_urls": {
+      "login_bg": "https://images.unsplash.com/photo-1580035144415-01307b0e464a?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "cctv_placeholder_1": "https://images.unsplash.com/photo-1580035144415-01307b0e464a?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "cctv_placeholder_2": "https://images.unsplash.com/photo-1768753259273-a8d66253085b?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "cctv_placeholder_3": "https://images.unsplash.com/photo-1764194537566-5334508013cc?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "control_room_bg": "https://images.unsplash.com/photo-1565351206078-bb912481dcdd?crop=entropy&cs=srgb&fm=jpg&q=85"
+    },
+    "icons": {
+      "library": "lucide-react",
+      "styles": "stroke-width: 1.5px; size: 20px;"
+    }
+  },
+  "accessibility": {
+    "contrast_check": "Ensure red alerts are readable on dark backgrounds. Use pure white text on red backgrounds.",
+    "motion": "Allow users to disable flashing alerts in settings.",
+    "sound": "Visual cues must accompany all sound alerts."
+  },
+  "instructions_to_main_agent": [
+    "Install 'lucide-react' for icons if not present.",
+    "Use 'sonner' for toast notifications.",
+    "Implement the 'Bento Grid' layout for the main dashboard.",
+    "Use the provided image URLs for placeholders in the Video Feed components.",
+    "For the 'Alerts' panel, use a high-contrast red border or background to immediately draw attention.",
+    "Ensure the video feed player has a 'LIVE' indicator (pulsing red dot).",
+    "The layout must be responsive. On mobile, stack video feeds vertically.",
+    "Use 'recharts' for any analytics charts (Accident History stats)."
+  ],
+  "universal_guidelines": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Component Reuse: Prioritize using pre-existing components from src/components/ui when applicable.",
+    "Export Conventions: Components MUST use named exports; Pages MUST use default exports.",
+    "Toasts: Use 'sonner' for toasts."
+  ]
+}

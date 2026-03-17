@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+python-dotenv
+motor
+pydantic
+passlib[bcrypt]
+python-jose[cryptography]
+opencv-python
+numpy
+ultralytics
+yt-dlp
+twilio
+websockets
+python-multipart
